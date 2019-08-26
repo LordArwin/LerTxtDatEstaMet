@@ -1,4 +1,3 @@
-from relatorio import Relatorio
 from datetime import date
 from reportlab.pdfgen import canvas
 
