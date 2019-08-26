@@ -81,3 +81,4 @@ class Relatorio(object):
         Story.append(t)
         # write the document to disk
         doc.build(Story)
+        print("DEU")
