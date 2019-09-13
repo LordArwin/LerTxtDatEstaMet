@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>440</width>
-    <height>445</height>
+    <width>412</width>
+    <height>441</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,24 +18,50 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="4" column="0" colspan="2">
-     <widget class="QCalendarWidget" name="calendario"/>
-    </item>
-    <item row="5" column="1">
-     <widget class="QCheckBox" name="checkTipo">
+    <item row="3" column="3">
+     <widget class="QCheckBox" name="checkDia">
       <property name="text">
-       <string>Somente Mês e Ano</string>
+       <string>Pdf Dia</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="0">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Selecione o Arquivo:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
      <widget class="QPushButton" name="botaoGerar">
       <property name="text">
        <string>Gerar</string>
       </property>
      </widget>
     </item>
+    <item row="1" column="0" colspan="4">
+     <widget class="QCalendarWidget" name="calendario"/>
+    </item>
     <item row="3" column="1">
+     <widget class="QCheckBox" name="checkplanilha">
+      <property name="text">
+       <string>Planilha</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QCheckBox" name="checkmes">
+      <property name="text">
+       <string>Pdf Mês</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" colspan="3">
      <widget class="QPushButton" name="escolheArquivo">
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
@@ -55,18 +81,6 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Selecione o Arquivo:</string>
-      </property>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -74,7 +88,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>440</width>
+     <width>412</width>
      <height>21</height>
     </rect>
    </property>

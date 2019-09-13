@@ -7,7 +7,7 @@ from reportlab.lib.pagesizes import letter, inch, portrait
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
-
+ 
 
 
 class Leitor():
@@ -19,6 +19,9 @@ class Leitor():
         self.arquivo = open(self.caminho, 'r')
         self.worksheet = None
         self.workbook = None
+
+    
+
 
 
 
@@ -88,15 +91,19 @@ class Leitor():
                    
             except Exception as e:
                 print(e)
-        self.arquivo.close()
-        t=Table(self.dados)
-        t.setStyle(TableStyle([('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
-                               ('BOX', (0,0), (-1,-1), 1, colors.black),
-                               ]))
-        t._argW[1]=3.5*inch
-        t._argW[0]=3.5*inch
-        self.Story.append(t)
-        self.doc.build(self.Story)
+        try:
+            t=Table(self.dados)
+            t.setStyle(TableStyle([('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
+                                   ('BOX', (0,0), (-1,-1), 1, colors.black),
+                                   ]))
+            t._argW[1]=3.5*inch
+            t._argW[0]=3.5*inch
+            self.Story.append(t)
+            self.doc.build(self.Story)
+            self.arquivo.close()
+
+        except Exception as e:
+            print(e)
 
 
     def lerArquivoMes(self):
@@ -250,7 +257,7 @@ class Leitor():
                                 
 
 
-                                self.worksheet.write(row-1, 9, label = '{}'.format(tempMin))
+                                self.worksheet.write(row-1, 10, label = '{}'.format(tempMin))
 
                             ############################################
 
@@ -551,8 +558,7 @@ class Leitor():
             self.coletaDados()
             self.workbook.save('planilha.xls')
 
+     
+
         except  Exception as e:
             print(e)
-
-            
-    

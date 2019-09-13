@@ -15,6 +15,9 @@ class Editor(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.show()
         self.fileName = None
+        self.ui.checkplanilha.setChecked(True)
+
+
         
 
     def file(self):
@@ -28,17 +31,32 @@ class Editor(QtWidgets.QMainWindow):
 
     def gerar(self):
         if self.fileName != None:
-            if self.ui.checkTipo.isChecked():
-                l = Leitor(self.fileName,str(self.ui.calendario.selectedDate().toPyDate()))
-                #l.lerArquivoMes()
+            l = Leitor(self.fileName,str(self.ui.calendario.selectedDate().toPyDate()))
+            if self.ui.checkplanilha.isChecked():
                 l.escreverXls()
+            elif self.ui.checkDia.isChecked():
+                l.lerArquivoDia()
             else:
-                l = Leitor(self.fileName,str(self.ui.calendario.selectedDate().toPyDate()))
-                #l.lerArquivoDia()
-                l.escreverXls()
+                l.lerArquivoMes()
+            
+    def clickCheck(self):
+        if self.ui.checkplanilha.isChecked():
+            self.ui.checkplanilha.setChecked(False)
+        if self.ui.checkmes.isChecked():
+            self.ui.checkmes.setChecked(False)
+    
+    def clickCheckMes(self):
+        if self.ui.checkplanilha.isChecked():
+            self.ui.checkplanilha.setChecked(False)
+        if self.ui.checkDia.isChecked():
+            self.ui.checkDia.setChecked(False)
 
 
-
+    def clickCheckPlan(self):
+        if self.ui.checkDia.isChecked():
+            self.ui.checkDia.setChecked(False)
+        if self.ui.checkmes.isChecked():
+            self.ui.checkmes.setChecked(False)
 def main():
     app = QtWidgets.QApplication(sys.argv)
     ex = Editor()
