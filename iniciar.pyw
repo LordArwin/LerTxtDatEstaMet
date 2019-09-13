@@ -15,12 +15,13 @@ class Editor(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.show()
         self.fileName = None
+        
 
     def file(self):
 
         options = QFileDialog.Options()
 
-        self.fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","Documentos (*.txt)", options=options)
+        self.fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","Documentos (*.dat *.txt)", options=options)
         if self.fileName:
             print(self.fileName)
             self.ui.escolheArquivo.setText(self.fileName.split("/")[-1])
@@ -29,10 +30,12 @@ class Editor(QtWidgets.QMainWindow):
         if self.fileName != None:
             if self.ui.checkTipo.isChecked():
                 l = Leitor(self.fileName,str(self.ui.calendario.selectedDate().toPyDate()))
-                l.lerArquivoMes()
+                #l.lerArquivoMes()
+                l.escreverXls()
             else:
                 l = Leitor(self.fileName,str(self.ui.calendario.selectedDate().toPyDate()))
-                l.lerArquivoDia()
+                #l.lerArquivoDia()
+                l.escreverXls()
 
 
 
